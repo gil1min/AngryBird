@@ -65,13 +65,13 @@ public class Slingshot : MonoBehaviour
 		return centerPoint.transform.position;
 	}
 
-	private void HideLine() 
+	private void HideLine()
 	{
 		rightRenderer.enabled = false;
 		leftRenderer.enabled = false;
 	}
 
-	private void ShowLine() 
+	private void ShowLine()
 	{
 		rightRenderer.enabled = true;
 		leftRenderer.enabled = true;

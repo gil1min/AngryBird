@@ -57,7 +57,8 @@ public class Bird : MonoBehaviour
 
 	private void MoveControl()
 	{
-		if (isMouseDown) {
+		if (isMouseDown)
+		{
 			transform.position = GetMousePostion();
 		}
 	}
@@ -65,11 +66,12 @@ public class Bird : MonoBehaviour
 	private Vector3 GetMousePostion()
 	{
 		Vector3 centerPosition = Slingshot.Instance.GetCenterPosition();
-		Vector3 mousePosition =  Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePosition.z = 0;
 		Vector3 mouseDirection = mousePosition - centerPosition;
 		float distance = mouseDirection.magnitude;
-		if (distance > maxDistance) {
+		if (distance > maxDistance)
+		{
 			mousePosition = mouseDirection.normalized * maxDistance + centerPosition;
 		}
 		return mousePosition;
