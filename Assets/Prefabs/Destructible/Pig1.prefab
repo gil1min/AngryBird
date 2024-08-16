@@ -102,6 +102,7 @@ MonoBehaviour:
   maxHP: 120
   injuredSpriteList:
   - {fileID: 1603576367, guid: cf5d634a08c57f74aa2dfda190144a36, type: 3}
+  score: 3000
 --- !u!58 &830092226937362483
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

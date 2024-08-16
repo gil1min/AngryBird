@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1865597003618723758}
   - component: {fileID: 1113281980887981779}
   - component: {fileID: 3150860195417743145}
-  - component: {fileID: 5354616184360757712}
+  - component: {fileID: -523793313914307660}
   m_Layer: 0
   m_Name: Pig3
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.12483984}
   serializedVersion: 2
   m_Radius: 0.64016014
---- !u!114 &5354616184360757712
+--- !u!114 &-523793313914307660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,9 +158,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3360136566319608889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e15bde1cacdb4580a87f7b8a70976f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 40e170640e0b54f71bba4f0bb43261fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 200
-  injuredSpriteList:
-  - {fileID: 2098769360, guid: cf5d634a08c57f74aa2dfda190144a36, type: 3}
+  injuredSpriteList: []
+  score: 10000

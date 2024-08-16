@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum BirdState
 {
 	Waiting,
 	BeforeShoot,
-	AfterShoot
+	AfterShoot,
+	WaitToDie
 }
 public class Bird : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class Bird : MonoBehaviour
 	public float maxDistance = 3f;
 	public float flySpeed = 15;
 	private Rigidbody2D rgd;
+	private bool isFlying = true;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -31,6 +32,9 @@ public class Bird : MonoBehaviour
 			case BirdState.BeforeShoot:
 				MoveControl();
 				break;
+			case BirdState.AfterShoot:
+				StopControl();
+				break;
 			default:
 				break;
 		}
@@ -42,6 +46,7 @@ public class Bird : MonoBehaviour
 		{
 			isMouseDown = true;
 			Slingshot.Instance.StartDraw(transform);
+			AudioManager.Instance.PlayBirdSelect(transform.position);
 		}
 	}
 
@@ -82,5 +87,41 @@ public class Bird : MonoBehaviour
 		rgd.bodyType = RigidbodyType2D.Dynamic;
 		rgd.velocity = (Slingshot.Instance.GetCenterPosition() - transform.position).normalized * flySpeed;
 		state = BirdState.AfterShoot;
+
+		AudioManager.Instance.PlayBirdFlying(transform.position);
+	}
+
+	public void EnterOnTheField(Vector3 position)
+	{
+		state = BirdState.BeforeShoot;
+		transform.position = position;
+	}
+
+	public void StopControl()
+	{
+		if (rgd.velocity.magnitude < 0.1f) {
+			state = BirdState.WaitToDie;
+			Invoke(nameof(LoadNextBird), 1f);
+		}
+	}
+
+	protected void LoadNextBird()
+	{
+		Destroy(gameObject);
+		Instantiate(Resources.Load("Boom1"), transform.position, Quaternion.identity);
+		GameManager.Instance.LoadNextBird();
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (state == BirdState.AfterShoot)
+		{
+
+		}
+		
+		if (state == BirdState.AfterShoot && collision.relativeVelocity.magnitude > 5) 
+		{
+			AudioManager.Instance.PlayBirdCollision(transform.position);
+		}
 	}
 }

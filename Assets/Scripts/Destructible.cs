@@ -26,17 +26,33 @@ public class Destructible : MonoBehaviour
         }
         else
         {
+            Sprite beforeSprite = spriteRenderer.sprite;
             int index = (int)((maxHP - currentHP) / (maxHP / (injuredSpriteList.Count + 1.0f))) - 1;
             if (index != -1)
             {
                 spriteRenderer.sprite = injuredSpriteList[index];
             }
+            if (beforeSprite != spriteRenderer.sprite)
+            {
+                PlayAudioCollision();
+            }
+
         }
     }
 
-    private void Dead()
+    public virtual void Dead()
     {
-        GameObject.Instantiate(boomPrefab, transform.position, Quaternion.identity);
+        Instantiate(boomPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    protected virtual void PlayAudioCollision()
+    {
+        AudioManager.Instance.PlayWoodCollision(transform.position);
+    }
+
+    protected virtual void PlayAudioDestroyed()
+    {
+        AudioManager.Instance.PlayWoodDestroyed(transform.position);
     }
 }
