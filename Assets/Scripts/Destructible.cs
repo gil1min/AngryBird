@@ -19,25 +19,7 @@ public class Destructible : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentHP -= (int)(collision.relativeVelocity.magnitude * 8);
-        if (currentHP <= 0)
-        {
-            Dead();
-        }
-        else
-        {
-            Sprite beforeSprite = spriteRenderer.sprite;
-            int index = (int)((maxHP - currentHP) / (maxHP / (injuredSpriteList.Count + 1.0f))) - 1;
-            if (index != -1)
-            {
-                spriteRenderer.sprite = injuredSpriteList[index];
-            }
-            if (beforeSprite != spriteRenderer.sprite)
-            {
-                PlayAudioCollision();
-            }
-
-        }
+        TakeDamage((int)(collision.relativeVelocity.magnitude * 8));
     }
 
     public virtual void Dead()
@@ -54,5 +36,27 @@ public class Destructible : MonoBehaviour
     protected virtual void PlayAudioDestroyed()
     {
         AudioManager.Instance.PlayWoodDestroyed(transform.position);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        if (currentHP <= 0)
+        {
+            Dead();
+        }
+        else
+        {
+            Sprite beforeSprite = spriteRenderer.sprite;
+            int index = (int)((maxHP - currentHP) / (maxHP / (injuredSpriteList.Count + 1.0f))) - 1;
+            if (index != -1)
+            {
+                spriteRenderer.sprite = injuredSpriteList[index];
+            }
+            if (beforeSprite != spriteRenderer.sprite)
+            {
+                PlayAudioCollision();
+            }
+        }
     }
 }

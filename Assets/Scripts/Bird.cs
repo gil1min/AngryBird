@@ -15,13 +15,16 @@ public class Bird : MonoBehaviour
 	private bool isMouseDown = false;
 	public float maxDistance = 3f;
 	public float flySpeed = 15;
-	private Rigidbody2D rgd;
+	protected Rigidbody2D rgd;
 	private bool isFlying = true;
+	public bool hasUsedSkill = false;
+	private Collider2D collider;
 	// Start is called before the first frame update
 	void Start()
 	{
 		rgd = GetComponent<Rigidbody2D>();
 		rgd.bodyType = RigidbodyType2D.Static;
+		collider = GetComponent<Collider2D>();
 	}
 
 	// Update is called once per frame
@@ -29,11 +32,15 @@ public class Bird : MonoBehaviour
 	{
 		switch (state)
 		{
+			case BirdState.Waiting:
+				WaitControl();
+				break;
 			case BirdState.BeforeShoot:
 				MoveControl();
 				break;
 			case BirdState.AfterShoot:
 				StopControl();
+				SkillControl();
 				break;
 			default:
 				break;
@@ -99,7 +106,8 @@ public class Bird : MonoBehaviour
 
 	public void StopControl()
 	{
-		if (rgd.velocity.magnitude < 0.1f) {
+		if (rgd.velocity.magnitude < 0.1f)
+		{
 			state = BirdState.WaitToDie;
 			Invoke(nameof(LoadNextBird), 1f);
 		}
@@ -116,12 +124,44 @@ public class Bird : MonoBehaviour
 	{
 		if (state == BirdState.AfterShoot)
 		{
-
+			isFlying = false;
 		}
-		
-		if (state == BirdState.AfterShoot && collision.relativeVelocity.magnitude > 5) 
+
+		if (state == BirdState.AfterShoot && collision.relativeVelocity.magnitude > 5)
 		{
 			AudioManager.Instance.PlayBirdCollision(transform.position);
 		}
+	}
+
+	private void SkillControl()
+	{
+		if (hasUsedSkill) return;
+
+		if (isFlying && Input.GetMouseButtonDown(0))
+		{
+			hasUsedSkill = true;
+			FlyingSkill();
+		}
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			hasUsedSkill = true;
+			FullTimeSkill();
+		}
+	}
+
+	protected virtual void FlyingSkill()
+	{
+
+	}
+
+	protected virtual void FullTimeSkill()
+	{
+
+	}
+
+	private void WaitControl()
+	{
+
 	}
 }
