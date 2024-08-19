@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private int index = -1;
     private int pigTotalCount;
     private int pigDeadCount;
-    public FollowTarget cameraFollowTarget;
+    private FollowTarget cameraFollowTarget;
 
     private void Awake()
     {
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextBird()
     {
+        print("Load next bird!");
         index++;
         if (index >= birdList.Length)
         {
