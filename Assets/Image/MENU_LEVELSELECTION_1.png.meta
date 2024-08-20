@@ -262,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MENU_LEVELSELECTION_1_6
+      name: LevelUnlock
       rect:
         serializedVersion: 2
         x: 1
@@ -472,13 +472,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MENU_LEVELSELECTION_1_16
+      name: Star1
       rect:
         serializedVersion: 2
         x: 481
-        y: 166
-        width: 65
-        height: 35
+        y: 167
+        width: 98
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -496,8 +496,8 @@ TextureImporter:
       name: MENU_LEVELSELECTION_1_17
       rect:
         serializedVersion: 2
-        x: 547
-        y: 171
+        x: 596
+        y: 153
         width: 30
         height: 28
       alignment: 0
@@ -514,13 +514,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MENU_LEVELSELECTION_1_18
+      name: Star0
       rect:
         serializedVersion: 2
-        x: 481
-        y: 134
-        width: 31
-        height: 28
+        x: 480
+        y: 133
+        width: 96
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -538,8 +538,8 @@ TextureImporter:
       name: MENU_LEVELSELECTION_1_19
       rect:
         serializedVersion: 2
-        x: 513
-        y: 133
+        x: 587
+        y: 152
         width: 32
         height: 31
       alignment: 0
@@ -559,8 +559,8 @@ TextureImporter:
       name: MENU_LEVELSELECTION_1_20
       rect:
         serializedVersion: 2
-        x: 546
-        y: 134
+        x: 592
+        y: 160
         width: 30
         height: 28
       alignment: 0
@@ -577,7 +577,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MENU_LEVELSELECTION_1_21
+      name: LevelLock
       rect:
         serializedVersion: 2
         x: 1
@@ -734,6 +734,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      LevelLock: 1343544623
+      LevelUnlock: -1390672274
       MENU_LEVELSELECTION_1_0: 933246694
       MENU_LEVELSELECTION_1_1: -2094020988
       MENU_LEVELSELECTION_1_10: -1392672297
@@ -741,13 +743,10 @@ TextureImporter:
       MENU_LEVELSELECTION_1_13: 515600948
       MENU_LEVELSELECTION_1_14: -543346766
       MENU_LEVELSELECTION_1_15: -536232807
-      MENU_LEVELSELECTION_1_16: 13224496
       MENU_LEVELSELECTION_1_17: -626261861
-      MENU_LEVELSELECTION_1_18: 311596939
       MENU_LEVELSELECTION_1_19: 892180625
       MENU_LEVELSELECTION_1_2: -1139348893
       MENU_LEVELSELECTION_1_20: -1507513214
-      MENU_LEVELSELECTION_1_21: 1343544623
       MENU_LEVELSELECTION_1_23: 6669455
       MENU_LEVELSELECTION_1_24: 1706922703
       MENU_LEVELSELECTION_1_25: 138854814
@@ -755,11 +754,12 @@ TextureImporter:
       MENU_LEVELSELECTION_1_3: 1000077286
       MENU_LEVELSELECTION_1_4: 1531547977
       MENU_LEVELSELECTION_1_5: -1920251356
-      MENU_LEVELSELECTION_1_6: -1390672274
       MENU_LEVELSELECTION_1_7: -783083671
       MENU_LEVELSELECTION_1_8: -1014606050
       MENU_LEVELSELECTION_1_9: -1068581467
       Star: -742795730
+      Star0: 311596939
+      Star1: 13224496
       Star2: -1499137875
       Star3: 1227302025
   mipmapLimitGroupName: 

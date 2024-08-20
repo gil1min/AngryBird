@@ -12,7 +12,6 @@ public class MapUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Show(1);
     }
 
     // Update is called once per frame
@@ -26,6 +25,7 @@ public class MapUI : MonoBehaviour
     {
         if (starCount < 0)
         {
+            GetComponent<Button>().enabled = false;
             lockUI.SetActive(true);
             starUI.SetActive(false);
             lockUI.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
