@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int pigTotalCount;
     private int pigDeadCount;
     private FollowTarget cameraFollowTarget;
+    public GameOverUI gameOverUI;
 
     private void Awake()
     {
@@ -51,6 +52,33 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        print("game over!");
+        int starCount = 0;
+        Debug.Log(pigDeadCount);
+        Debug.Log(pigTotalCount);
+        float pigDeadPercent = pigDeadCount * 1f / pigTotalCount;
+
+        if (pigDeadPercent > 0.99f)
+        {
+            starCount = 3;
+        }
+        else if (pigDeadCount > 0.66f)
+        {
+            starCount = 2;
+        }
+        else if (pigDeadCount > 0.33f)
+        {
+            starCount = 1;
+        }
+        gameOverUI.Show(starCount);
+    }
+
+    public void RestartLevel()
+    {
+
+    }
+
+    public void LevelList()
+    {
+        
     }
 }
