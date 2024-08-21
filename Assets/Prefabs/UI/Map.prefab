@@ -379,6 +379,8 @@ MonoBehaviour:
   lockUI: {fileID: 9022890681697309191}
   starUI: {fileID: 4962818497356406457}
   starCountTextUI: {fileID: 8114756669014781365}
+  mapLevelUI: {fileID: 0}
+  mapID: 0
 --- !u!114 &2409698755174811120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +424,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 844009043680873690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3392838045064898532}
+        m_TargetAssemblyTypeName: MapUI, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9022890681697309191
 GameObject:
   m_ObjectHideFlags: 0

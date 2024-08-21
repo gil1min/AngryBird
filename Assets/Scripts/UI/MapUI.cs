@@ -9,20 +9,14 @@ public class MapUI : MonoBehaviour
     public GameObject lockUI;
     public GameObject starUI;
     public TextMeshProUGUI starCountTextUI;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public MapLevelUI mapLevelUI;
+    public int mapID;
 
     // startCount == -1 means locked
-    public void Show(int starCount)
+    public void Show(int starCount, MapLevelUI mapLevelUI, int mapID)
     {
+        this.mapLevelUI = mapLevelUI;
+        this.mapID = mapID;
         if (starCount < 0)
         {
             GetComponent<Button>().enabled = false;
@@ -36,5 +30,10 @@ public class MapUI : MonoBehaviour
             starUI.SetActive(true);
             starCountTextUI.text = starCount.ToString();
         }
+    }
+
+    public void OnClick()
+    {
+        mapLevelUI.OnMapButtonClick(mapID);
     }
 }

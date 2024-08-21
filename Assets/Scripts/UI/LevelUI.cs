@@ -13,8 +13,14 @@ public class LevelUI : MonoBehaviour
     public GameObject star1Go;
     public GameObject star2Go;
     public GameObject star3Go;
-   public void Show(int starCount)
+    private MapLevelUI mapLevelUI;
+    private int levelID;
+   public void Show(int starCount, int levelID, MapLevelUI mapLevelUI)
    {
+        this.mapLevelUI = mapLevelUI;
+        this.levelID = levelID;
+        levelNumberText.text = levelID.ToString();
+        
         star0Go.SetActive(false);
         star1Go.SetActive(false);
         star2Go.SetActive(false);
@@ -52,6 +58,6 @@ public class LevelUI : MonoBehaviour
 
    public void OnClick()
    {
-
+        mapLevelUI.OnLevelButtonClick(levelID);
    }
 }

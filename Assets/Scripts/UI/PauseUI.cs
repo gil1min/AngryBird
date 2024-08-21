@@ -24,11 +24,11 @@ public class PauseUI : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
-
+        GameManager.Instance.RestartLevel();
     }
 
     public void OnLevelListButtonClick()
     {
-        
+        GameManager.Instance.LevelList();
     }
 }

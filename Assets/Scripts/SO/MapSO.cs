@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class MapSO : ScriptableObject
 {
-    public int startNumberOfMap = -1;
+    public int starNumberOfMap = -1;
     public int[] starNumberOfLevel = { -1 };
 }

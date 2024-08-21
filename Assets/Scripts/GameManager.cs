@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public GameSO gameSO;
     private Bird[] birdList;
     private int index = -1;
     private int pigTotalCount;
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         pigDeadCount = 0;
+        LoadSelectedLevel();
     }
 
     private void Start()
@@ -24,6 +27,15 @@ public class GameManager : MonoBehaviour
         pigTotalCount = FindObjectsByType<Pig>(FindObjectsSortMode.None).Length;
         cameraFollowTarget = Camera.main.GetComponent<FollowTarget>();
         LoadNextBird();
+    }
+
+    private void LoadSelectedLevel()
+    {
+        Time.timeScale = 1;
+        int mapID = gameSO.selectedMapID;
+        int levelID = gameSO.selectedLevelID;
+        GameObject levelPrefab = Resources.Load<GameObject>("Map" + mapID + "/" + "Level" + levelID);
+        Instantiate(levelPrefab);
     }
 
     public void OnPigDead()
@@ -53,8 +65,6 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         int starCount = 0;
-        Debug.Log(pigDeadCount);
-        Debug.Log(pigTotalCount);
         float pigDeadPercent = pigDeadCount * 1f / pigTotalCount;
 
         if (pigDeadPercent > 0.99f)
@@ -70,15 +80,16 @@ public class GameManager : MonoBehaviour
             starCount = 1;
         }
         gameOverUI.Show(starCount);
+        gameSO.UpdateLevel(starCount);
     }
 
     public void RestartLevel()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LevelList()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
